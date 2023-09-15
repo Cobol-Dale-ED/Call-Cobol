@@ -15,8 +15,8 @@
        WORKING-STORAGE SECTION.
 
        01 ws-group-1.
-           05 ws-item-1                        PIC x(10).
-           05 ws-item-2                        PIC x(10).
+           05 ws-item-1 PIC x(10).
+           05 ws-item-2 PIC x(10).
 
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.

@@ -5,63 +5,64 @@
       * Purpose: Sub program called by main program.
       * Tectonics: cobc -x main_app.cbl sub.cbl -o a.out
       ******************************************************************
-       identification division.
-       program-id. sub-app.
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. sub-app.
 
-       data division.
+       DATA DIVISION.
 
-       file section.
+       FILE SECTION.
 
       *> Working storage values persist until a "cancel" call is made
       *> on the sub program.
-       working-storage section.
-       01  ws-test-item-1                 pic x(10).
-       01  ws-test-item-2                 pic x(10).
+       WORKING-STORAGE SECTION.
+       01  ws-test-item-1                 PIC x(10).
+       01  ws-test-item-2                 PIC x(10).
 
       *> Local storage values are fresh on each call of the sub program
       *> even if no "cancel" statement is made.
-       local-storage section.
-       01  ls-test-item-1                 pic x(10).
-       01  ls-test-item-2                 pic x(10).
+       LOCAL-STORAGE SECTION.
+       01  ls-test-item-1                 PIC x(10).
+       01  ls-test-item-2                 PIC x(10).
 
-       linkage section.
-       01  l-test-item-1                  pic x(10).
-       01  l-test-item-2                  pic x(10).
+       LINKAGE SECTION.
+       01  l-test-item-1                  PIC x(10).
+       01  l-test-item-2                  PIC x(10).
 
-       procedure division using l-test-item-1 l-test-item-2.
-       main-procedure.
-           display "In sub program: " l-test-item-1 " " l-test-item-2
-           display space
-           display "working-storage values at start:"
-           display "ws-test-item-1: " ws-test-item-1
-           display "ws-test-item-2: " ws-test-item-2
-           display space
-           display "local-storage values at start:"
-           display "ls-test-item-1: " ls-test-item-1
-           display "ls-test-item-2: " ls-test-item-2
-           display space
-           display "Moving linkage section values to ws and ls vars.."
+       PROCEDURE DIVISION USING l-test-item-1 l-test-item-2.
+       MAIN-PROCEDURE.
+           DISPLAY "In sub program: " l-test-item-1 " " l-test-item-2
+           DISPLAY SPACE
+           DISPLAY "working-storage values at start:"
+           DISPLAY "ws-test-item-1: " ws-test-item-1
+           DISPLAY "ws-test-item-2: " ws-test-item-2
+           DISPLAY SPACE
+           DISPLAY "local-storage values at start:"
+           DISPLAY "ls-test-item-1: " ls-test-item-1
+           DISPLAY "ls-test-item-2: " ls-test-item-2
+           DISPLAY SPACE
+           DISPLAY "Moving linkage section values to ws and ls vars.."
 
-           move l-test-item-1 to ws-test-item-1
-           move l-test-item-2 to ws-test-item-2
-           move l-test-item-1 to ls-test-item-1
-           move l-test-item-2 to ls-test-item-2
+           MOVE l-test-item-1 TO ws-test-item-1
+           MOVE l-test-item-2 TO ws-test-item-2
+           MOVE l-test-item-1 TO ls-test-item-1
+           MOVE l-test-item-2 TO ls-test-item-2
 
 
-           display "setting input variables to new value..."
-           move "replace1" to l-test-item-1
-           move "replace2" to l-test-item-2
+           DISPLAY "setting input variables to new value..."
+           MOVE "replace1" TO l-test-item-1
+           MOVE "replace2" TO l-test-item-2
 
-           display space
-           display "working-storage values at end:"
-           display "ws-test-item-1: " ws-test-item-1
-           display "ws-test-item-2: " ws-test-item-2
-           display space
-           display "local-storage values at end:"
-           display "ls-test-item-1: " ls-test-item-1
-           display "ls-test-item-2: " ls-test-item-2
-           display space
-           display "Exit sub program: " l-test-item-1 " " l-test-item-2
-           goback.
+           DISPLAY SPACE
+           DISPLAY "working-storage values at end:"
+           DISPLAY "ws-test-item-1: " ws-test-item-1
+           DISPLAY "ws-test-item-2: " ws-test-item-2
+           DISPLAY SPACE
+           DISPLAY "local-storage values at end:"
+           DISPLAY "ls-test-item-1: " ls-test-item-1
+           DISPLAY "ls-test-item-2: " ls-test-item-2
+           DISPLAY SPACE
+           DISPLAY "Exit sub program: " l-test-item-1 " " l-test-item-2
+           GOBACK.
 
-       end program sub-app.
+       END PROGRAM sub-app.
+
